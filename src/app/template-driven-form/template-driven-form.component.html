@@ -11,7 +11,7 @@
         </div>
         <div class="col-md-8">
           <input type="text" class="form-control" id="firstname" name="firstname"
-          #firstName ="ngModel" ngModel placeholder="First Name Required"
+          #firstName ="ngModel" ngModel ([ngModel]) = "customer.firstname" placeholder="First Name Required"
           required minlength="3"
           [ngClass] = "{'is-invalid':(firstName.touched || firstName.dirty) && !firstName.valid}">
           <span class="invalid-feedback alert alert-danger" *ngIf = "firstName.errors?.required">
@@ -29,7 +29,7 @@
           <label for="" class="col-form-label">Last Name</label>
         </div>
         <div class="col-md-8"><input type="text" class="form-control" id="lastname" name="lastname"
-          ngModel #lastName = "ngModel"
+          ngModel #lastName = "ngModel" [(ngModel)] = "customer.lastname"
           required minlength="3"
           placeholder="Last Name Required"
           [ngClass] = "{'is-invalid':(lastName.touched || lastName.dirty) && !lastName.valid} "
@@ -52,7 +52,7 @@
          <input type="email" class="form-control" id="email" name="email"
          placeholder="Email Address"
          required
-         ngModel #emailAddress = "ngModel"
+         ngModel #emailAddress = "ngModel" [(ngModel)] = "customer.email"
          [ngClass] = "{'is-invalid':(emailAddress.touched || emailAddress.dirty) && !emailAddress.valid}">
          <span class="invalid-feedback alert alert-danger" *ngIf = "emailAddress.errors?.required">
               Please Enter Your Email Address
@@ -70,13 +70,14 @@
               <label for="" class="form-check-label">
                 <input type="checkbox" class="form-check-input"
                 name="sendCatalog" ngModel #sendCatalog= "ngModel"
+                [(ngModel)] = "customer.sendCatalog"
                 id="sendCatalog">
               </label>
             </div>
           </div>
       </div>
 
-      <div *ngIf = "sendCatalog">
+      <div *ngIf = "customer.sendCatalog">
 
         <div class="form-group row mb-2">
           <div class="col-md-2">
@@ -87,21 +88,24 @@
               <label for="" class="form-check-label">
                 <input type="radio" class="form-check-input"
                 name="addressType" id="addressType1" value="work"
-                ngModel #adrress1 = "ngModel"> Work
+                ngModel #adrress1 = "ngModel"
+                [(ngModel)] = "customer.addressType"> Work
               </label>
             </div>
 
             <div class="form-check form-check-inline">
               <label for="" class="form-check-inline">
                 <input type="radio" class="form-check-input" id="addressType2"
-                ngModel #address2 = "ngModel" value="home" name="addressType"> Home
+                ngModel #address2 = "ngModel" value="home" name="addressType"
+                [(ngModel)] = "customer.addressType"> Home
               </label>
             </div>
 
           <div class="form-check form-check-inline">
             <label for="" class="form-check-label">
               <input type="radio" class="form-check-input" id="addressType3"
-              name="addressType" ngModel #address3 = "ngModel">Other
+              name="addressType" ngModel #address3 = "ngModel"
+              [(ngModel)] = "customer.addressType">Other
             </label>
           </div>
           </div>
@@ -116,6 +120,7 @@
                    type="text"
                    placeholder="Street address"
                    ngModel #street2 = "ngModel"
+                   [(ngModel)] = "customer.street1"
                    name="street1">
           </div>
         </div>
@@ -129,6 +134,7 @@
                    type="text"
                    placeholder="Street address (second line)"
                    ngModel #street2 = "ngModel"
+                   [(ngModel)] = "customer.street2"
                    name="street2">
           </div>
         </div>
@@ -142,12 +148,14 @@
                    type="text"
                    placeholder="City"
                    ngModel #city = "ngModel"
+                   [(ngModel)] = "customer.city"
                    name="city">
           </div>
           <div class="col-md-3">
             <select class="form-control"
                     id="stateId"
                     ngModel #state = "ngModel"
+                    [(ngModel)] = "customer.state"
                     name="state">
               <option value=""
                       disabled
@@ -169,6 +177,7 @@
                    type="number"
                    placeholder="Zip Code"
                    ngModel #zip = "ngModel"
+                   [(ngModel)] = "customer.zip"
                    name="zip">
           </div>
         </div>
