@@ -1,1 +1,22 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+
+body{
+  background:#212f3c;
+  color: #ccd1d1;
+}
+.card{
+  background-color:#2e4053;
+}
+nav.navbar{
+  background-color:#2e4053;
+
+}
+li.nav-item>a.nav-link{
+  color: white !important;
+  font-size: 18px;
+}
+.navbar-brand{
+  color: white;
+}
