@@ -19,7 +19,10 @@ export class ReactiveValidationComponent implements OnInit {
     this.customerForm = this.fb.group({
       firstname:['', [Validators.required, Validators.minLength(3)]],
       lastname:['', [Validators.required, Validators.minLength]],
-      email:['',[Validators.required, Validators.email]],
+      emailGroup:this.fb.group({
+        email:['',[Validators.required, Validators.email]],
+        emailConfirm:['',[Validators.required, Validators.email]]
+      },{validator:this.emailMatcher}),
       phone:[''],
       notification:'email',
       rating:[null, this.ratingValidator],
@@ -69,6 +72,21 @@ export class ReactiveValidationComponent implements OnInit {
         }
         return null
       }
+  }
+
+  emailMatcher(c:AbstractControl):{[key:string]:boolean} | null
+  {
+    const email = c.get('email')
+    const emailConfirm = c.get('emailConfirm')
+
+    if(email.pristine || emailConfirm.pristine){
+      return null
+    }
+
+    if(email.value !== emailConfirm.value){
+      return {'match':true}
+    }
+    return null
   }
 
   submit(){
