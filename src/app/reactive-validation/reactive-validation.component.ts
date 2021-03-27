@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 import { Customer } from '../template-driven-form/customer';
 
 @Component({
@@ -22,12 +22,14 @@ export class ReactiveValidationComponent implements OnInit {
       email:['',[Validators.required, Validators.email]],
       phone:[''],
       notification:'email',
+      rating:[null, this.ratingValidator],
+      rating_param:['',this.ratingValidatorParams(1,5)],
       sendCatalog:false,
       addressType:'home',
       street1:'',
       street2:'',
       city:'',
-      state:'',
+      state:[''],
       zip:null
     })
   }
@@ -51,6 +53,22 @@ export class ReactiveValidationComponent implements OnInit {
       lastname:"oloo",
       email:"oloodorcas99@gmail.com"
     })
+  }
+
+  ratingValidator(c:AbstractControl):{[key:string]:boolean} | null{
+    if(c.value !== null && (isNaN(c.value)) || c.value < 1 || c.value> 5){
+      return {'range':true}
+    }
+    return null
+  }
+
+  ratingValidatorParams(min:number, max:number):ValidatorFn{
+      return (c:AbstractControl):{[key:string]:boolean} | null => {
+        if (c.value !== null && (isNaN(c.value)) || c.value < min || c.value > max){
+          return {'range2':true}
+        }
+        return null
+      }
   }
 
   submit(){
