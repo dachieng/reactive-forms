@@ -54,7 +54,7 @@
          <input type="email" class="form-control" id="email"
          placeholder="Email Address"
          formControlName = "email"
-         required
+         required email
          [ngClass] = "{'is-invalid':(customerForm.get('email').touched || customerForm.get('email').dirty) && !customerForm.get('email').valid}">
          <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.get('email').errors?.required">
               Please Enter Your Email Address
@@ -185,12 +185,10 @@
             Submit
           </button>
         </div>
+        <button type="button" class="btn btn-outline-success" (click) = "populateData()">
+          Test Data
+        </button>
       </div>
-
-
-
-
-
 
     </form>
   </div>

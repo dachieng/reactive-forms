@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, NgForm, FormGroup } from '@angular/forms';
+import { FormControl, NgForm, FormGroup, FormBuilder } from '@angular/forms';
 import { Customer } from '../template-driven-form/customer';
 
 @Component({
@@ -9,12 +9,12 @@ import { Customer } from '../template-driven-form/customer';
 })
 export class ReactiveFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fb:FormBuilder) { }
   customer = new Customer()
   customerForm:FormGroup
 
   ngOnInit(): void {
-    this.customerForm = new FormGroup({
+   /* this.customerForm = new FormGroup({
       firstname:new FormControl(),
       lastname:new FormControl(),
       email: new FormControl(),
@@ -25,13 +25,33 @@ export class ReactiveFormComponent implements OnInit {
       city:new FormControl(),
       state:new FormControl(),
       zip:new FormControl()
+    })
+*/
+    this.customerForm = this.fb.group({
+      firstname:'',
+      lastname:'',
+      email:'',
+      sendCatalog:false,
+      addressType:'home',
+      street1:'',
+      street2:'',
+      city:'',
+      state:'',
+      zip:null
 
+    })
 
+  }
+
+  populateData(){
+    this.customerForm.patchValue({
+      firstname:"Dorcas",
+      lastname:"oloo",
+      email:"oloodorcas99@gmail.com"
     })
   }
 
-  submit(form:NgForm){
-    console.log(form)
+  submit(){
     console.log(JSON.stringify(this.customerForm.value))
   }
 
