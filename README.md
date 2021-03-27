@@ -1,4 +1,10 @@
 # Reactiveforms
+### About Reacive forms
+Covers basic angular forms concepts both for reactive and template forms including
+1. Form models and Data Models
+2. Form Directives
+3. Form building blocks
+4. 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.2.
 
