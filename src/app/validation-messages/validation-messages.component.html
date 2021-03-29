@@ -1,290 +1,35 @@
 <div class="card">
-    <div class="card-header">
-      <h4 class="text-center">Template Driven Form</h4>
-    </div>
-    <div class="card-body">
-      <form [formGroup] = "customerForm" (ngSubmit)= "submit()" novalidate>
-
-        <div class="form-group row mb-2">
-          <div class="col-md-2">
-            <label for="firstname" class="col-form-label">First Name</label>
-          </div>
-          <div class="col-md-8">
-            <input type="text" class="form-control" id="firstname"
-            formControlName = "firstname"
-            placeholder="First Name Required"
-            [ngClass] = "{'is-invalid':(customerForm.controls.firstname.touched || customerForm.controls.firstname.dirty) && !customerForm.controls.firstname.valid}">
-            <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.controls.firstname.errors?.required">
-                Please Input First Name
-            </span>
-            <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.controls.firstname.errors?.minlength">
-              Minimum Of 3 Characters Required
-
-            </span>
-          </div>
-        </div>
-
-        <div class="form-group row mb-2">
-          <div class="col-md-2">
-            <label for="" class="col-form-label">Last Name</label>
-          </div>
-          <div class="col-md-8"><input type="text" class="form-control" id="lastname"
-            formControlName = "lastname"
-
-            placeholder="Last Name Required"
-            [ngClass] = "{'is-invalid':(customerForm.get('lastname').touched || customerForm.get('lastname').dirty) && !customerForm.get('lastname').valid} "
-            >
-            <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.get('lastname').errors?.required">
-                Please Input Last Name
-            </span>
-            <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.get('lastname').errors?.minlength">
-              A minimum of 3 Characters required
-          </span>
-          </div>
-
-        </div>
-
-        <div formGroupName = "emailGroup">
-          <div class="form-group row mb-2">
-            <div class="col-md-2">
-              <label for="" class="col-form-label">Email</label>
-           </div>
-           <div class="col-md-8">
-             <input type="email" class="form-control" id="email"
-             placeholder="Email Address"
-             formControlName = "email"
-             [ngClass] = "{'is-invalid':customerForm.get('emailGroup').errors || ((customerForm.get('emailGroup.email').touched || customerForm.get('emailGroup.email').dirty) && !customerForm.get('emailGroup.email').valid)}">
-             <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.get('emailGroup.email').errors?.required">
-                  Please Enter Your Email Address
-             </span>
-             <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.get('emailGroup.email').errors?.email">
-                Enter A Valid Email Address
-             </span>
-
-
-            </div>
-
-          </div>
-          <div class="form-group row mb-2">
-            <div class="col-md-2">
-              <label for="" class="col-form-label">Confirm Email</label>
-           </div>
-           <div class="col-md-8">
-             <input type="email" class="form-control" id="emailConfirm"
-             placeholder="Confirm Email Address"
-             formControlName = "emailConfirm"
-             [ngClass] = "{'is-invalid':customerForm.get('emailGroup').errors || ((customerForm.get('emailGroup.emailConfirm').touched || customerForm.get('emailGroup.emailConfirm').dirty) && !customerForm.get('emailGroup.emailConfirm').valid)}">
-             <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.get('emailGroup.emailConfirm').errors?.required">
-                  Please Enter Your Email Address
-             </span>
-             <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.get('emailGroup.emailConfirm').errors?.email">
-                Enter A Valid Email Address
-             </span>
-
-             <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.get('emailGroup').errors?.match">
-              Email address does not match
-            </span>
-            </div>
-         </div>
-
-      </div>
-
-        <div class="form-group row mb-2">
-          <div class="col-md-2">
-            <label for="" class="col-form-label">Phone Number</label>
-          </div>
-          <div class="col-md-8">
-            <input type="tel" class="form-control" id="phone"
-            formControlName = "phone"
-            placeholder="Phone Number"
-            [ngClass] = "{'is-invalid': !customerForm.controls.phone.valid}">
-            <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.controls.phone.errors?.required">
-              Phone Number Required
-            </span>
-          </div>
-        </div>
-
-        <div class="form-group row mb-2">
-          <div class="col-md-2">
-            <label for="" class="col-form-check">Send Notifications</label>
-          </div>
-          <div class="col-md-8">
-            <div class="form-check form-check-inline">
-              <label for="" class="form-check-label">
-                <input type="radio" class="form-check-input" value="email"
-                formControlName = "notification"
-                > Email
-              </label>
-              </div>
-              <div class="form-check form-check-inline">
-                <label for="" class="form-check-label">
-                  <input type="radio" class="form-check-input" value="text"
-                  formControlName = "notification"
-                  > Text
-                </label>
-                </div>
-          </div>
-
-        </div>
-
-        <div class="row form-group mb-2">
-          <div class="col-md-2">
-            <label for="" class="form-col-label">Rating</label>
-          </div>
-          <div class="col-md-8">
-            <input type="number" class="form-control" id="rating"
-            formControlName="rating"
-            [ngClass] = "{'is-invalid':(customerForm.get('rating').touched || customerForm.get('rating').dirty) && !customerForm.get('rating').valid}">
-
-            <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.get('rating').errors?.range">
-              Enter rating experience between 1 and 5
-            </span>
-          </div>
-        </div>
-
-        <div class="row form-group mb-2">
-          <div class="col-md-2">
-            <label for="" class="form-col-label">Rating2</label>
-          </div>
-          <div class="col-md-8">
-            <input type="number" class="form-control" id="rating_param"
-            formControlName="rating_param"
-            [ngClass] = "{'is-invalid':(customerForm.get('rating_param').touched || customerForm.get('rating_param').dirty) && !customerForm.get('rating_param').valid}">
-
-            <span class="invalid-feedback alert alert-danger" *ngIf = "customerForm.get('rating_param').errors?.range2">
-              Enter rating experience between 1 and 5
-            </span>
-          </div>
-        </div>
-
-        <div class="form-group row mb-2">
-            <div class="col-md-8">
-              <div class="form-check">
-                <label for="" class="form-check-label">
-                  <input type="checkbox" class="form-check-input"
-                  formControlName = "sendCatalog"
-                  id="sendCatalog">
-                </label>
-              </div>
-            </div>
-        </div>
-
-        <div *ngIf = "customerForm.get('sendCatalog')">
-
-          <div class="form-group row mb-2">
-            <div class="col-md-2">
-              <label for="" class="col-form-label">Address Type</label>
-            </div>
-            <div class="col-md-8">
-              <div class="form-check form-check-inline">
-                <label for="" class="form-check-label">
-                  <input type="radio" class="form-check-input"
-                  id="addressType1" value="work"
-                  formControlName = "addressType"
-                  > Work
-                </label>
-              </div>
-
-              <div class="form-check form-check-inline">
-                <label for="" class="form-check-inline">
-                  <input type="radio" class="form-check-input" id="addressType2"
-                  value="home"
-                  formControlName = "addressType"
-                  > Home
-                </label>
-              </div>
-
-            <div class="form-check form-check-inline">
-              <label for="" class="form-check-label">
-                <input type="radio" class="form-check-input" id="addressType3"
-                value="other"
-                formControlName = "addressType">Other
-              </label>
-            </div>
-            </div>
-          </div>
-
-           <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label"
-                   for="street1Id">Street Address 1</label>
-            <div class="col-md-8">
-              <input class="form-control"
-                     id="street1Id"
-                     type="text"
-                     placeholder="Street address"
-                     formControlName = "street1"
-                     >
-            </div>
-          </div>
-
-          <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label"
-                   for="street2Id">Street Address 2</label>
-            <div class="col-md-8">
-              <input class="form-control"
-                     id="street2Id"
-                     type="text"
-                     placeholder="Street address (second line)"
-                     formControlName = "street2">
-            </div>
-          </div>
-
-          <div class="form-group row mb-2">
-            <label class="col-md-2 col-form-label"
-                   for="cityId">City, State, Zip Code</label>
-            <div class="col-md-3">
-              <input class="form-control"
-                     id="cityId"
-                     type="text"
-                     placeholder="City"
-                     formControlName = "city">
-            </div>
-            <div class="col-md-3">
-              <select class="form-control"
-                      id="stateId"
-                      formControlName = "state">
-
-                <option value=""
-                        disabled
-                        selected
-                        hidden>Select a State...</option>
-                <option value="KE">Kenya</option>
-                <option value="TZ">Tanzania</option>
-                <option value="UG">Uganda</option>
-                <option value="RW">Rwanda</option>
-                <option value="BU">Burundi</option>
-                <option value="ET">Ethopia</option>
-                <option value="SU">Sudan</option>
-                <option value="ER">Eritrea</option>
-              </select>
-
-            </div>
-            <div class="col-md-2">
-              <input class="form-control"
-                     id="zipId"
-                     type="number"
-                     placeholder="Zip Code"
-                     formControlName = "zip">
-            </div>
-          </div>
-        </div>
-
-        <div class="form-group row mb-2">
-          <div class="offset-md-2 col-md-2">
-            <button type="submit" class="btn btn-outline-light"
-            [title] = "customerForm.valid ? 'Save Data' : 'Disabled until form is valid' "
-            [disabled] = "!customerForm.valid"
-            >
-              Submit
-            </button>
-          </div>
-          <button type="button" class="btn btn-outline-success" (click) = "populateData()">
-            Test Data
-          </button>
-        </div>
-
-      </form>
-
-      {{customerForm.value | json}}
-    </div>
+  <div class="card-header">
+    <h4 class="text-center">
+      Validation Messages
+    </h4>
   </div>
+  <div class="card-body">
+    <form [formGroup] = "customerForm" (ngSubmit) = "submit(customerForm)">
+      <div class="row form-group mb-3">
+        <div class="col-md-2">
+          <label for="" class="col-form-label">First Name</label>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" formControlName = "firstname"
+            [ngClass] = "{'is-invalid': firstNameMessage}">
+            <span class="invalid-feedback alert alert-danger">
+                {{firstNameMessage}}
+            </span>
+        </div>
+      </div>
+      <div class="form-group row mb-3">
+        <div class="col-md-2">
+          <label for="" class="col-form-label">Email</label>
+        </div>
+        <div class="col-md-8">
+          <input type="email" class="form-control" formControlName="email"
+          [ngClass] = "{'is-invalid': emailMessage}">
+          <span class="invalid-feedback alert alert-danger">
+            {{emailMessage}}
+        </span>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
