@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ReactToChangesComponent } from './react-to-changes/react-to-changes.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ReactiveValidationComponent } from './reactive-validation/reactive-validation.component';
 import { TemplateDrivenFormComponent } from './template-driven-form/template-driven-form.component';
@@ -7,7 +8,8 @@ import { TemplateDrivenFormComponent } from './template-driven-form/template-dri
 const routes: Routes = [
   { path: 'template-driven', component: TemplateDrivenFormComponent },
   { path: 'reactive-form', component: ReactiveFormComponent },
-  { path: 'reactive-validation', component: ReactiveValidationComponent}
+  { path: 'reactive-validation', component: ReactiveValidationComponent},
+  { path: 'changes', component: ReactToChangesComponent },
 ];
 
 @NgModule({

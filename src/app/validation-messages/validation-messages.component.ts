@@ -3,11 +3,11 @@ import {AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '
 import { Customer } from '../template-driven-form/customer';
 
 @Component({
-  selector: 'app-reactive-validation',
-  templateUrl: './reactive-validation.component.html',
-  styleUrls: ['./reactive-validation.component.css']
+  selector: 'app-validation-messages',
+  templateUrl: './validation-messages.component.html',
+  styleUrls: ['./validation-messages.component.css']
 })
-export class ReactiveValidationComponent implements OnInit {
+export class ValidationMessagesComponent implements OnInit {
 
   constructor(private fb : FormBuilder) { }
   customer = new Customer()
@@ -34,7 +34,11 @@ export class ReactiveValidationComponent implements OnInit {
       city:'',
       state:[''],
       zip:null
-    })
+    });
+
+    this.customerForm.get('notification').valueChanges.subscribe(
+      value => this.setNotification(value)
+    )
   }
 
   setNotification(notifyBy:string){
@@ -92,6 +96,7 @@ export class ReactiveValidationComponent implements OnInit {
   submit(){
     console.log(JSON.stringify(this.customerForm.value))
   }
+
 
 
 }

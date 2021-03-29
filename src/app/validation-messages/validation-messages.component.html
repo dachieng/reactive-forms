@@ -113,14 +113,14 @@
               <label for="" class="form-check-label">
                 <input type="radio" class="form-check-input" value="email"
                 formControlName = "notification"
-                (click) =  "setNotification('email')"> Email
+                > Email
               </label>
               </div>
               <div class="form-check form-check-inline">
                 <label for="" class="form-check-label">
                   <input type="radio" class="form-check-input" value="text"
                   formControlName = "notification"
-                  (click) =  "setNotification('text')"> Text
+                  > Text
                 </label>
                 </div>
           </div>
@@ -284,5 +284,7 @@
         </div>
 
       </form>
+
+      {{customerForm.value | json}}
     </div>
   </div>

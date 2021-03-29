@@ -7,13 +7,17 @@ import { TemplateDrivenFormComponent } from './template-driven-form/template-dri
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ReactiveValidationComponent } from './reactive-validation/reactive-validation.component';
+import { ReactToChangesComponent } from './react-to-changes/react-to-changes.component';
+import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TemplateDrivenFormComponent,
     ReactiveFormComponent,
-    ReactiveValidationComponent
+    ReactiveValidationComponent,
+    ReactToChangesComponent,
+    ValidationMessagesComponent
   ],
   imports: [
     BrowserModule,
