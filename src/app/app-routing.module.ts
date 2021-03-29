@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DynamicallyAddingInputElememtsComponent } from './dynamically-adding-input-elememts/dynamically-adding-input-elememts.component';
 import { ReactToChangesComponent } from './react-to-changes/react-to-changes.component';
 import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ReactiveValidationComponent } from './reactive-validation/reactive-validation.component';
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'reactive-validation', component: ReactiveValidationComponent},
   { path: 'changes', component: ReactToChangesComponent },
   { path: 'validationmessages', component: ValidationMessagesComponent },
+  { path: 'addinput', component: DynamicallyAddingInputElememtsComponent },
 ];
 
 @NgModule({

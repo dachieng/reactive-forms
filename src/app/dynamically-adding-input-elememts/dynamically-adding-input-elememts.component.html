@@ -1,0 +1,59 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Dynamically Adding Input Elememts</h4>
+  </div>
+  <form [formGroup] ="customerForm" (ngSubmit) = submit(customerForm)>
+  <div class="card-body">
+    <div formArrayName = "addressGroup"
+    *ngFor = "let address of addressGroup.controls; let i=index">
+    <div [formGroupName] = "i">
+    <div class="form-group row mb-2">
+      <label class="col-md-2 col-form-label"
+             attr.for="{{'cityId' + i}}">City, State, Zip Code</label>
+      <div class="col-md-2">
+        <input class="form-control"
+               id="{{'cityId' + i}}"
+               type="text"
+               placeholder="City"
+               formControlName = "city">
+      </div>
+      <div class="col-md-2">
+        <select class="form-control"
+                id="{{'stateId' + i}}"
+                formControlName = "state">
+
+          <option value=""
+                  disabled
+                  selected
+                  hidden>Select a State...</option>
+          <option value="KE">Kenya</option>
+          <option value="TZ">Tanzania</option>
+          <option value="UG">Uganda</option>
+          <option value="RW">Rwanda</option>
+          <option value="BU">Burundi</option>
+          <option value="ET">Ethopia</option>
+          <option value="SU">Sudan</option>
+          <option value="ER">Eritrea</option>
+        </select>
+
+      </div>
+      <div class="col-md-2">
+        <input class="form-control"
+               id="{{'zipId' + i}}"
+               type="number"
+               placeholder="Zip Code"
+               formControlName = "zip">
+      </div>
+      <div class="col-md-2">
+        <button class="btn btn-outline-light" (click)="addAddress()">
+          Add Address
+        </button>
+      </div>
+    </div>
+
+{{customerForm.value | json}}
+  </div>
+</div>
+</div>
+</form>
+</div>

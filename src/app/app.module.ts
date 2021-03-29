@@ -9,6 +9,7 @@ import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 import { ReactiveValidationComponent } from './reactive-validation/reactive-validation.component';
 import { ReactToChangesComponent } from './react-to-changes/react-to-changes.component';
 import { ValidationMessagesComponent } from './validation-messages/validation-messages.component';
+import { DynamicallyAddingInputElememtsComponent } from './dynamically-adding-input-elememts/dynamically-adding-input-elememts.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { ValidationMessagesComponent } from './validation-messages/validation-me
     ReactiveFormComponent,
     ReactiveValidationComponent,
     ReactToChangesComponent,
-    ValidationMessagesComponent
+    ValidationMessagesComponent,
+    DynamicallyAddingInputElememtsComponent
   ],
   imports: [
     BrowserModule,
